@@ -50,7 +50,7 @@ def bootstrap():
             [
                 "git",
                 "clone",
-                "https://github.com/MohammedTaherMcW/core_installer.git",
+                "https://github.com/MohammedTaherMcW/Innatera_core_installer.git",
             ]
         )
 
@@ -85,7 +85,7 @@ def main():
         
         print("Implementing Bootstrap")
         
-        sys.path.insert(0, os.getcwd()+"/core_installer")
+        sys.path.insert(0, os.getcwd()+"/Innatera_core_installer")
         print(sys.path)
         bootstrap()
 

@@ -41,11 +41,9 @@ def install_pip():
 
 
 def bootstrap():
-    print("Implementing Bootstrap begins")
+
 
     try:
-
-        print("Try block of Bootstrap")
         subprocess.call(
             [
                 "git",
@@ -53,44 +51,19 @@ def bootstrap():
                 "https://github.com/MohammedTaherMcW/Innatera_core_installer.git",
             ]
         )
-
-        print("Cloning Successful")
-        
     except subprocess.CalledProcessError as exc:
         print("File exist")  
     
-    if not check_pip_installed():
-      install_pip()    
-    subprocess.call(["python", "-m", "pip", "install", "wheel"])
-    subprocess.call(["python", "-m", "pip", "install", "click"])
-    subprocess.call(["python", "-m", "pip", "install", "colorama"])
-    subprocess.call(["python", "-m", "pip", "install", "idna"])
-    subprocess.call(["python", "-m", "pip", "install", "requests"])
-    subprocess.call(
-        ["python", "-m", "pip", "install", "semantic_version"]
-    )
-    subprocess.call(["python", "-m", "pip", "install", "urllib3"])
-    subprocess.call(["python", "-m", "pip", "install", "certifi"])
-    subprocess.call(
-        ["python", "-m", "pip ", "install", "charset_normalizer"]
-    )
     import pioinstaller.__main__
-    print("Main of Pio installer")
 
     pioinstaller.__main__.main()
 
-    print("Installation Completed")
 
-def main():
-        
-        print("Implementing Bootstrap")
-        
-        sys.path.insert(0, os.getcwd()+"/Innatera_core_installer")
-        print(sys.path)
+def main():        
+        sys.path.insert(0, os.getcwd()+"/Innatera_core_installer")        
         bootstrap()
 
 if __name__ == "__main__":
-    print("Installation Begins")
     main()
 `;
 

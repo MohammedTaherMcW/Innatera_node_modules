@@ -39,10 +39,7 @@ def install_pip():
         print(f"Failed to install pip: {e}")
         sys.exit(1)
 
-
 def bootstrap():
-
-
     try:
         subprocess.call(
             [
@@ -53,11 +50,11 @@ def bootstrap():
         )
     except subprocess.CalledProcessError as exc:
         print("File exist")  
-    
+        
     import pioinstaller.__main__
 
     pioinstaller.__main__.main()
-
+    os.remove("/Innatera_core_installer")
 
 def main():        
         sys.path.insert(0, os.getcwd()+"/Innatera_core_installer")        

@@ -34,6 +34,11 @@ export class ProjectTasks {
       multienv: true,
     },
     {
+      name: 'Custom',
+      args: ['custom', 'process'],
+      multienv: true,
+    },
+    {
       name: 'Devices',
       args: ['device', 'list'],
     },

@@ -224,6 +224,7 @@ export default class PlatformIOCoreStage extends BaseStage {
 
       withProgress('Installing PlatformIO Home', 80);
       await this.installPIOHome();
+      await this.installPIOCustom();
     } catch (err) {
       misc.reportError(err);
       throw err;
@@ -236,6 +237,14 @@ export default class PlatformIOCoreStage extends BaseStage {
   async installPIOHome() {
     try {
       await core.getPIOCommandOutput(['home', '--host', '__do_not_start__']);
+    } catch (err) {
+      console.warn(err);
+    }
+  }
+  async installPIOCustom() {
+    try {
+      console.log("installPIOCustom");
+      await core.getPIOCommandOutput(['custom', '--host', '__do_not_start__']);
     } catch (err) {
       console.warn(err);
     }

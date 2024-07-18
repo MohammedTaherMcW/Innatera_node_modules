@@ -66,14 +66,11 @@ export function getFrontendUrl(options) {
       delete params[key];
     }
   });
-  console.log("Params", params);
   return constructServerUrl({ query: params });
 }
 
 export async function getFrontendVersion() {
   try {
-    console.log("Getting Frontend Version",   await got(constructServerUrl({ path: '/package.json' }), { timeout: 1000 }).json()
-    ).version;
     return (
       await got(constructServerUrl({ path: '/package.json' }), { timeout: 1000 }).json()
     ).version;
@@ -152,6 +149,7 @@ async function findFreePort() {
 
 export async function isServerStarted() {
   if (!(await isPortUsed(_HTTP_PORT, _HTTP_HOST))) {
+    console.log("Is Port used", _HTTP_HOST, _HTTP_PORT)
     return false;
   }
   return !!(await getFrontendVersion());
@@ -178,7 +176,6 @@ export async function ensureServerStarted(options = {}) {
 }
 
 async function _ensureServerStarted(options = {}) {
-  console.log("custom Session ID From the _ensureServerStarted", SESSION_ID);
   if (_HTTP_PORT === 0) {
     _HTTP_PORT = options.port || (await findFreePort());
   }
@@ -194,7 +191,7 @@ async function _ensureServerStarted(options = {}) {
       let output = '';
       runPIOCommand(
         [
-          'home',
+          'custom',
           '--port',
           _HTTP_PORT,
           '--host',

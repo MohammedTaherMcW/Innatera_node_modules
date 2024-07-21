@@ -35,7 +35,7 @@ export class ProjectTasks {
     },
     {
       name: 'Custom',
-      args: ['custom', 'process'],
+      args: ['custom'],
       multienv: true,
     },
     {

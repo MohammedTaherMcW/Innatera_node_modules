@@ -35,8 +35,9 @@ export class ProjectTasks {
     },
     {
       name: 'Custom',
+      description: 'Run custom build command',
       args: ['custom'],
-      multienv: true,
+      multienv: false,
     },
     {
       name: 'Devices',

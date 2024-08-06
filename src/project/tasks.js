@@ -11,6 +11,10 @@ import * as core from '../core';
 export class ProjectTasks {
   static generalTasks = [
     {
+      name: 'Build',
+      args: ['run']
+    },
+    {
       name: 'Build Release',
       args: ['run', '--target', 'makerelease'],
       multienv: true,

@@ -11,7 +11,7 @@ import * as core from '../core';
 export class ProjectTasks {
   static generalTasks = [
     {
-      name: 'Build',
+      name: 'Build1',
       args: ['run']
     },
     {

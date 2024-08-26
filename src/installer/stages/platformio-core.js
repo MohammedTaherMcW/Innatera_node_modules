@@ -243,7 +243,6 @@ export default class PlatformIOCoreStage extends BaseStage {
   }
   async installPIOCustom() {
     try {
-      console.log("installPIOCustom");
       await core.getPIOCommandOutput(['custom', '--host', '__do_not_start__']);
     } catch (err) {
       console.warn(err);

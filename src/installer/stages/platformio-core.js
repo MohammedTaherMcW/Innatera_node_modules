@@ -35,7 +35,6 @@ export default class PlatformIOCoreStage extends BaseStage {
       return;
     }
     const builtInPythonDir = PlatformIOCoreStage.getBuiltInPythonDir();
-    console.log("builtInPythonDir",builtInPythonDir);
     proc.extendOSEnvironPath('PLATFORMIO_PATH', [
       proc.IS_WINDOWS ? builtInPythonDir : path.join(builtInPythonDir, 'bin'),
     ]);

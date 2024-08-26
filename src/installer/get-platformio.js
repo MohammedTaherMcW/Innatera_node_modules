@@ -78,15 +78,12 @@ export async function getInstallerScript() {
   } catch (err) {
     await fs.writeFile(scriptPath, PYTHON_SCRIPT_CODE, { encoding: 'utf-8' });
   }
-  console.log("scriptPath  ",scriptPath);
   return scriptPath;
 }
 
 export async function callInstallerScript(pythonExecutable, args) {
   const envClone = Object.assign({}, process.env);
   envClone.PLATFORMIO_CORE_DIR = core.getCoreDir();
-  console.log("Python Executable from get-platform.js", pythonExecutable);
-  console.log("COmmand output args", args, "   " );
   return await getCommandOutput(
     pythonExecutable,
     [await getInstallerScript(), ...args],

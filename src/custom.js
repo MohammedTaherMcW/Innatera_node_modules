@@ -16,7 +16,6 @@ import got from 'got';
 import jsonrpc from 'jsonrpc-lite';
 import path from 'path';
 import tcpPortUsed from 'tcp-port-used';
-import { u } from 'tar';
 
 const SERVER_LAUNCH_TIMEOUT = 30; // 30 seconds
 const SERVER_AUTOSHUTDOWN_TIMEOUT = 3600; // 1 hour
@@ -29,8 +28,6 @@ const SESSION_ID = crypto
 let _HTTP_HOST = '127.0.0.2';
 let _HTTP_PORT = 0;
 let _IDECMDS_LISTENER_STATUS = 0;
-
-console.log(` froom Custom Session ID: ${SESSION_ID}`);
 
 export function constructServerUrl({
   scheme = 'http',
@@ -50,7 +47,6 @@ export function constructServerUrl({
     Object.keys(query).forEach((key) => qs.set(key, query[key]));
     url += `?${qs.toString()}`;
   }
-  console.log("from custom URL Generated is :", url);
   return url;
 }
 
@@ -149,15 +145,12 @@ async function findFreePort() {
 
 export async function isServerStarted() {
   if (!(await isPortUsed(_HTTP_PORT, _HTTP_HOST))) {
-    console.log("Is Port used", _HTTP_HOST, _HTTP_PORT)
     return false;
   }
   return !!(await getFrontendVersion());
 }
 
 export async function ensureServerStarted(options = {}) {
-  
-  console.log("Session ID", SESSION_ID);
   const maxAttempts = 3;
   let attemptNums = 0;
   let lastError = undefined;

@@ -10,7 +10,7 @@ import * as core from './core';
 import * as home from './home';
 import * as misc from './misc';
 import * as proc from './proc';
-import * as custom from './custom'
+import * as custom from './custom';
 
 import { ProjectTasks, TaskItem } from './project/tasks';
 

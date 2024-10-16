@@ -37,7 +37,7 @@ export function getCoreDir() {
   const coreDir =
     process.env.PLATFORMIO_CORE_DIR ||
     process.env.PLATFORMIO_HOME_DIR /* backward compatibility */ ||
-    path.join(userHomeDir, '.platformio');
+    path.join(userHomeDir, '.innatera');
   if (!proc.IS_WINDOWS) {
     return coreDir;
   }
@@ -45,8 +45,8 @@ export function getCoreDir() {
   const rootDir = path.format({
     root: coreDirPathFormat.root,
     dir: coreDirPathFormat.root,
-    base: '.platformio',
-    name: '.platformio',
+    base: '.innatera',
+    name: '.innatera',
   });
   // if we already created it
   try {

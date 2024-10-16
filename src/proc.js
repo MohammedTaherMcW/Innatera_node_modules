@@ -142,7 +142,6 @@ export function runCommand(cmd, args, callback = undefined, options = {}) {
 }
 
 function _runCommand(cmd, args, callback, options) {
-  console.info('runCommand', cmd, args, options);
   const outputLines = [];
   const errorLines = [];
   let completed = false;

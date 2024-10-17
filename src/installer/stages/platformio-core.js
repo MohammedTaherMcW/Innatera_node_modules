@@ -223,6 +223,7 @@ export default class PlatformIOCoreStage extends BaseStage {
 
       withProgress('Installing Innatera Home', 80);
       await this.installPIOHome();
+      withProgress('Installing Innatera Custom', 80);
       await this.installPIOCustom();
     } catch (err) {
       misc.reportError(err);

@@ -96,7 +96,7 @@ export default class PlatformIOCoreStage extends BaseStage {
 
     // Load PIO Core state
     const coreState = await misc.loadJSON(stateJSONPath);
-    console.info('PIO Core State', coreState);
+    console.info('Innatera Core State', coreState);
     core.setCoreState(coreState);
     await fs.unlink(stateJSONPath); // cleanup
     return true;

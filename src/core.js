@@ -109,7 +109,7 @@ export function getEnvBinDir() {
 export async function getCorePythonExe() {
   const result = getCoreState().python_exe;
   if (!result) {
-    throw new Error('PlatformIO Core is not installed');
+    throw new Error('Innatera Core is not installed');
   }
   return result;
 }
@@ -119,7 +119,7 @@ export async function getCorePythonCommandOutput(args, options) {
 }
 
 export async function getPIOCommandOutput(args, options = {}) {
-  const baseArgs = ['-m', 'platformio'];
+  const baseArgs = ['-m', 'innaterapluginio'];
   if (process.env.PLATFORMIO_CALLER) {
     baseArgs.push('-c', process.env.PLATFORMIO_CALLER);
   }
@@ -127,7 +127,7 @@ export async function getPIOCommandOutput(args, options = {}) {
 }
 
 export async function runPIOCommand(args, callback, options = {}) {
-  const baseArgs = ['-m', 'platformio'];
+  const baseArgs = ['-m', 'innaterapluginio'];
   if (process.env.PLATFORMIO_CALLER) {
     baseArgs.push('-c', process.env.PLATFORMIO_CALLER);
   }

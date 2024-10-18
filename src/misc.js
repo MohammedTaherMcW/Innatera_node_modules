@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017-present PlatformIO <contact@platformio.org>
+ * Copyright (c) 2017-present Innatera <contact@Innatera.org>
  * All rights reserved.
  *
  * This source code is licensed under the license found in the LICENSE file in
@@ -77,10 +77,10 @@ export function getErrorReportUrl(title, description) {
     ['after connection broken by', 'https://bit.ly/3q6StTV'],
     ['subprocess.CalledProcessError', 'https://bit.ly/3EFlxWq'],
     ['Can not find Python Interpreter', 'https://bit.ly/3wkz0Qv'],
-    ['platformio-ide.useBuiltinPIOCore', 'https://bit.ly/3AhJHHe'],
+    ['Innatera-ide.useBuiltinPIOCore', 'https://bit.ly/3AhJHHe'],
     ['Could not start PIO Home server: Timeout error', 'https://bit.ly/3m2Tbl9'],
     ['Could not create PIO Core Virtual Environment', 'https://bit.ly/43hNh04'],
-    ['Compatible PlatformIO Core not found', 'https://bit.ly/43tNj4C'],
+    ['Compatible Innatera Core not found', 'https://bit.ly/43tNj4C'],
     [
       'Could not find a version that satisfies the requirement',
       'https://bit.ly/3TOcnBK',

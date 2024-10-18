@@ -198,7 +198,7 @@ export default class ProjectObserver {
   async fetchLibDirs() {
     const script = `
 import json
-from platformio.public import get_project_watch_lib_dirs
+from innaterapluginio.public import get_project_watch_lib_dirs
 print(json.dumps(get_project_watch_lib_dirs()))
 `;
     const output = await core.getCorePythonCommandOutput(['-c', script], {

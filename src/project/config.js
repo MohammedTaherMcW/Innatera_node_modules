@@ -17,7 +17,7 @@ export default class ProjectConfig {
   async read() {
     const script = `
 import json
-from platformio.public import ProjectConfig
+from innaterapluginio.public import ProjectConfig
 
 config = ProjectConfig()
 envs = config.envs()

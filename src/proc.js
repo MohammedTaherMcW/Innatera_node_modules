@@ -162,7 +162,6 @@ function _runCommand(cmd, args, callback, options) {
     const stderr = errorLines.join('');
     callback(code, stdout, stderr);
   }
-
   options.spawnOptions = options.spawnOptions || {};
 
   if (options.projectDir) {

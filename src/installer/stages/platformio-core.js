@@ -35,7 +35,7 @@ export default class PlatformIOCoreStage extends BaseStage {
       return;
     }
     const builtInPythonDir = PlatformIOCoreStage.getBuiltInPythonDir();
-    proc.extendOSEnvironPath('PLATFORMIO_PATH', [
+    proc.extendOSEnvironPath('Innatera_PATH', [
       proc.IS_WINDOWS ? builtInPythonDir : path.join(builtInPythonDir, 'bin'),
     ]);
   }
@@ -58,7 +58,7 @@ export default class PlatformIOCoreStage extends BaseStage {
 
     // Setup `platformio` CLI globally for a Node.JS process
     if (this.params.useBuiltinPIOCore) {
-      proc.extendOSEnvironPath('PLATFORMIO_PATH', [
+      proc.extendOSEnvironPath('Innatera_PATH', [
         core.getEnvBinDir(),
         core.getEnvDir(),
       ]);
@@ -159,7 +159,7 @@ export default class PlatformIOCoreStage extends BaseStage {
         status === this.params.pythonPrompt.STATUS_CUSTOMEXE &&
         result.pythonExecutable
       ) {
-        proc.extendOSEnvironPath('PLATFORMIO_PATH', [
+        proc.extendOSEnvironPath('Innatera_PATH', [
           path.dirname(result.pythonExecutable),
         ]);
       }

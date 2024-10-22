@@ -106,7 +106,7 @@ jjxDah2nGN59PRbxYvnKkKj9
 
 export async function findPythonExecutable() {
   const exenames = proc.IS_WINDOWS ? ['python.exe'] : ['python3', 'python'];
-  const envPath = process.env.PLATFORMIO_PATH || process.env.PATH;
+  const envPath = process.env.Innatera_PATH || process.env.PATH;
   const errors = [];
   for (const location of envPath.split(path.delimiter)) {
     for (const exename of exenames) {

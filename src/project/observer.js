@@ -146,7 +146,7 @@ export default class ProjectObserver {
     this.requestUpdateDirWatchers();
     if ((this.options.api || {}).onDidChangeProjectConfig) {
       this.options.api.onDidChangeProjectConfig(
-        path.join(this.projectDir, 'innaterapluginio.ini'),
+        path.join(this.projectDir, 'conf.ini'),
       );
     }
   }
@@ -157,7 +157,7 @@ export default class ProjectObserver {
 
   setupFSWatchers() {
     const watcher = this.options.api.createFileSystemWatcher(
-      path.join(this.projectDir, 'innaterapluginio.ini'),
+      path.join(this.projectDir, 'conf.ini'),
     );
     this.subscriptions.push(
       watcher,

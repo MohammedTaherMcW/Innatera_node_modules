@@ -204,7 +204,7 @@ async function _ensureServerStarted(options = {}) {
         {
           onProcStdout: (data) => {
             output += data.toString();
-            if (output.includes('PIO Home has been started')) {
+            if (output.includes('Innatera Home has been started')) {
               clearTimeout(timeoutID);
               resolve(true);
             }

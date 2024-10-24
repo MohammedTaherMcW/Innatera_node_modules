@@ -146,7 +146,7 @@ export default class ProjectObserver {
     this.requestUpdateDirWatchers();
     if ((this.options.api || {}).onDidChangeProjectConfig) {
       this.options.api.onDidChangeProjectConfig(
-        path.join(this.projectDir, 'platformio.ini'),
+        path.join(this.projectDir, 'conf.ini'),
       );
     }
   }
@@ -157,7 +157,7 @@ export default class ProjectObserver {
 
   setupFSWatchers() {
     const watcher = this.options.api.createFileSystemWatcher(
-      path.join(this.projectDir, 'platformio.ini'),
+      path.join(this.projectDir, 'conf.ini'),
     );
     this.subscriptions.push(
       watcher,
@@ -198,7 +198,7 @@ export default class ProjectObserver {
   async fetchLibDirs() {
     const script = `
 import json
-from platformio.public import get_project_watch_lib_dirs
+from innaterapluginio.public import get_project_watch_lib_dirs
 print(json.dumps(get_project_watch_lib_dirs()))
 `;
     const output = await core.getCorePythonCommandOutput(['-c', script], {

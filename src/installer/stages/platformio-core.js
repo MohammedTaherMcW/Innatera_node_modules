@@ -27,7 +27,7 @@ export default class PlatformIOCoreStage extends BaseStage {
   }
 
   get name() {
-    return 'PlatformIO Core';
+    return 'Innatera Core';
   }
 
   configureBuiltInPython() {
@@ -35,7 +35,7 @@ export default class PlatformIOCoreStage extends BaseStage {
       return;
     }
     const builtInPythonDir = PlatformIOCoreStage.getBuiltInPythonDir();
-    proc.extendOSEnvironPath('PLATFORMIO_PATH', [
+    proc.extendOSEnvironPath('Innatera_PATH', [
       proc.IS_WINDOWS ? builtInPythonDir : path.join(builtInPythonDir, 'bin'),
     ]);
   }
@@ -45,7 +45,7 @@ export default class PlatformIOCoreStage extends BaseStage {
       try {
         await fs.access(core.getEnvBinDir());
       } catch (err) {
-        throw new Error('PlatformIO Core has not been installed yet!');
+        throw new Error('Innatera Core has not been installed yet!');
       }
     }
     // check that PIO Core is installed
@@ -58,7 +58,7 @@ export default class PlatformIOCoreStage extends BaseStage {
 
     // Setup `platformio` CLI globally for a Node.JS process
     if (this.params.useBuiltinPIOCore) {
-      proc.extendOSEnvironPath('PLATFORMIO_PATH', [
+      proc.extendOSEnvironPath('Innatera_PATH', [
         core.getEnvBinDir(),
         core.getEnvDir(),
       ]);
@@ -96,7 +96,7 @@ export default class PlatformIOCoreStage extends BaseStage {
 
     // Load PIO Core state
     const coreState = await misc.loadJSON(stateJSONPath);
-    console.info('PIO Core State', coreState);
+    console.info('Innatera Core State', coreState);
     core.setCoreState(coreState);
     await fs.unlink(stateJSONPath); // cleanup
     return true;
@@ -159,7 +159,7 @@ export default class PlatformIOCoreStage extends BaseStage {
         status === this.params.pythonPrompt.STATUS_CUSTOMEXE &&
         result.pythonExecutable
       ) {
-        proc.extendOSEnvironPath('PLATFORMIO_PATH', [
+        proc.extendOSEnvironPath('Innatera_PATH', [
           path.dirname(result.pythonExecutable),
         ]);
       }
@@ -178,7 +178,7 @@ export default class PlatformIOCoreStage extends BaseStage {
     if (!this.params.useBuiltinPIOCore) {
       this.status = BaseStage.STATUS_FAILED;
       throw new Error(
-        'Could not find compatible PlatformIO Core. Please enable `platformio-ide.useBuiltinPIOCore` setting and restart IDE.',
+        'Could not find compatible Innatera Core. Please enable `platformio-ide.useBuiltinPIOCore` setting and restart IDE.',
       );
     }
     this.status = BaseStage.STATUS_INSTALLING;
@@ -205,7 +205,7 @@ export default class PlatformIOCoreStage extends BaseStage {
         }
       }
 
-      withProgress('Installing PlatformIO Core', 20);
+      withProgress('Installing Innatera Core', 20);
       const scriptArgs = [];
       if (this.useDevCore()) {
         scriptArgs.push('--dev');
@@ -218,11 +218,12 @@ export default class PlatformIOCoreStage extends BaseStage {
       );
 
       // check that PIO Core is installed and load its state an patch OS environ
-      withProgress('Loading PlatformIO Core state', 40);
+      withProgress('Loading Innatera Core state', 40);
       await this.loadCoreState();
 
-      withProgress('Installing PlatformIO Home', 80);
+      withProgress('Installing Innatera Home', 80);
       await this.installPIOHome();
+      withProgress('Installing Innatera Custom', 80);
       await this.installPIOCustom();
     } catch (err) {
       misc.reportError(err);

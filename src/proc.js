@@ -49,31 +49,31 @@ export function patchOSEnviron({ caller, extraPath, extraVars }) {
   }
 
   // copy system PATH
-  process.env.PLATFORMIO_PATH = process.env.PATH;
+  process.env.Innatera_PATH = process.env.PATH;
 
   // Fix for https://github.com/atom/atom/issues/11302
   if (process.env.Path) {
-    if (process.env.PLATFORMIO_PATH) {
-      process.env.PLATFORMIO_PATH += path.delimiter + process.env.Path;
+    if (process.env.Innatera_PATH) {
+      process.env.Innatera_PATH += path.delimiter + process.env.Path;
     } else {
-      process.env.PLATFORMIO_PATH = process.env.Path;
+      process.env.Innatera_PATH = process.env.Path;
     }
   }
 
   if (extraPath) {
-    extendOSEnvironPath('PLATFORMIO_PATH', extraPath.split(path.delimiter));
+    extendOSEnvironPath('Innatera_PATH', extraPath.split(path.delimiter));
   }
 
   // Expand Windows environment variables in %xxx% format
   const reWindowsEnvVar = /\%([^\%]+)\%/g;
   const expandedEnvVars = [];
   while (IS_WINDOWS) {
-    const matchedEnvVar = reWindowsEnvVar.exec(process.env.PLATFORMIO_PATH);
+    const matchedEnvVar = reWindowsEnvVar.exec(process.env.Innatera_PATH);
     if (!matchedEnvVar || expandedEnvVars.includes(matchedEnvVar[1])) {
       break;
     }
     expandedEnvVars.push(matchedEnvVar[1]);
-    process.env.PLATFORMIO_PATH = process.env.PLATFORMIO_PATH.replace(
+    process.env.Innatera_PATH = process.env.Innatera_PATH.replace(
       matchedEnvVar[0],
       process.env[matchedEnvVar[1]] || '',
     );
@@ -142,7 +142,6 @@ export function runCommand(cmd, args, callback = undefined, options = {}) {
 }
 
 function _runCommand(cmd, args, callback, options) {
-  console.info('runCommand', cmd, args, options);
   const outputLines = [];
   const errorLines = [];
   let completed = false;
@@ -163,7 +162,6 @@ function _runCommand(cmd, args, callback, options) {
     const stderr = errorLines.join('');
     callback(code, stdout, stderr);
   }
-
   options.spawnOptions = options.spawnOptions || {};
 
   if (options.projectDir) {
@@ -172,9 +170,9 @@ function _runCommand(cmd, args, callback, options) {
 
   // path PlatformIO's PATH
   const envClone = Object.assign({}, options.spawnOptions.env || process.env);
-  if (process.env.PLATFORMIO_PATH) {
-    envClone.PATH = process.env.PLATFORMIO_PATH;
-    envClone.Path = process.env.PLATFORMIO_PATH;
+  if (process.env.Innatera_PATH) {
+    envClone.PATH = process.env.Innatera_PATH;
+    envClone.Path = process.env.Innatera_PATH;
   }
   options.spawnOptions.env = envClone;
 
@@ -232,7 +230,7 @@ export function getCommandOutput(cmd, args, options = {}) {
 }
 
 export function whereIsProgram(program) {
-  const envPath = process.env.PLATFORMIO_PATH || process.env.PATH;
+  const envPath = process.env.Innatera_PATH || process.env.PATH;
   for (const location of envPath.split(path.delimiter)) {
     const executable = path.normalize(path.join(location, program)).replace(/"/g, '');
     try {

@@ -1,7 +1,7 @@
 {
-  "name": "platformio-node-helpers",
+  "name": "Innatera-node-helpers",
   "version": "11.2.0",
-  "description": "Collection of Node.JS helpers for PlatformIO",
+  "description": "Collection of Node.JS helpers for Innatera",
   "main": "dist/index.js",
   "engines": {
     "node": ">=14"
@@ -18,7 +18,7 @@
     "url": "https://github.com/MohammedTaherMcW/Innatera_node_modules.git"
   },
   "keywords": [
-    "PlatformIO",
+    "Innatera",
     "IoT",
     "debug",
     "unittest",
@@ -48,9 +48,9 @@
   ],
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/platformio/platformio-node-helpers/issues"
+    "url": "https://github.com/Innatera/Innatera-node-helpers/issues"
   },
-  "homepage": "https://platformio.org",
+  "homepage": "https://Innatera.org",
   "dependencies": {
     "global-agent": "^3.0.0",
     "got": "^11.8.6",

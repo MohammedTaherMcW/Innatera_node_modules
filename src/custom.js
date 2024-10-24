@@ -178,7 +178,7 @@ async function _ensureServerStarted(options = {}) {
   if (!(await isServerStarted())) {
     await new Promise((resolve, reject) => {
       const timeoutID = setTimeout(
-        () => reject(new Error('Could not start PIO Home server: Timeout error')),
+        () => reject(new Error('Could not start PIO Custom server: Timeout error')),
         SERVER_LAUNCH_TIMEOUT * 1000,
       );
       let output = '';
@@ -204,7 +204,7 @@ async function _ensureServerStarted(options = {}) {
         {
           onProcStdout: (data) => {
             output += data.toString();
-            if (output.includes('PIO Home has been started')) {
+            if (output.includes('Innatera Custom has been started')) {
               clearTimeout(timeoutID);
               resolve(true);
             }

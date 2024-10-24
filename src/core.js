@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017-present PlatformIO <contact@platformio.org>
+ * Copyright (c) 2017-present Innatera <contact@Innatera.org>
  * All rights reserved.
  *
  * This source code is licensed under the license found in the LICENSE file in
@@ -37,7 +37,7 @@ export function getCoreDir() {
   const coreDir =
     process.env.PLATFORMIO_CORE_DIR ||
     process.env.PLATFORMIO_HOME_DIR /* backward compatibility */ ||
-    path.join(userHomeDir, '.platformio');
+    path.join(userHomeDir, '.innatera');
   if (!proc.IS_WINDOWS) {
     return coreDir;
   }
@@ -45,8 +45,8 @@ export function getCoreDir() {
   const rootDir = path.format({
     root: coreDirPathFormat.root,
     dir: coreDirPathFormat.root,
-    base: '.platformio',
-    name: '.platformio',
+    base: '.innatera',
+    name: '.innatera',
   });
   // if we already created it
   try {
@@ -109,7 +109,7 @@ export function getEnvBinDir() {
 export async function getCorePythonExe() {
   const result = getCoreState().python_exe;
   if (!result) {
-    throw new Error('PlatformIO Core is not installed');
+    throw new Error('Innatera Core is not installed');
   }
   return result;
 }
@@ -119,7 +119,7 @@ export async function getCorePythonCommandOutput(args, options) {
 }
 
 export async function getPIOCommandOutput(args, options = {}) {
-  const baseArgs = ['-m', 'platformio'];
+  const baseArgs = ['-m', 'innaterapluginio'];
   if (process.env.PLATFORMIO_CALLER) {
     baseArgs.push('-c', process.env.PLATFORMIO_CALLER);
   }
@@ -127,7 +127,7 @@ export async function getPIOCommandOutput(args, options = {}) {
 }
 
 export async function runPIOCommand(args, callback, options = {}) {
-  const baseArgs = ['-m', 'platformio'];
+  const baseArgs = ['-m', 'innaterapluginio'];
   if (process.env.PLATFORMIO_CALLER) {
     baseArgs.push('-c', process.env.PLATFORMIO_CALLER);
   }

@@ -74,7 +74,7 @@ export class ProjectTasks {
     const script = `
 import json
 import os
-from platformio.public import load_build_metadata
+from innaterapluginio.public import load_build_metadata
 
 print(json.dumps(load_build_metadata(os.getcwd(), '${name}', cache=True)["targets"]))
   `;
